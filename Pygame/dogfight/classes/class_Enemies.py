@@ -8,26 +8,22 @@ from .class_Screen import win
 
 class Enemies:
     def __init__(self):
-        # self.image = Surface((25, 5))
-        # self.image.fill('Maroon')
         self.image = scale_by(load('images/rocket.gif').convert_alpha(), .3)
-        self.rect = self.image.get_rect(center=(
-                uniform(win.screen.get_width(), win.screen.get_width() + 1000),
-                uniform(0, win.screen.get_height())
-            ))
+        self.generate()
         self.speed = uniform(5, 15)
 
     def generate(self):
-        if self.rect.left < -200:
             self.rect = self.image.get_rect(center=(
                 uniform(win.screen.get_width(), win.screen.get_width() + 1000),
                 uniform(0, win.screen.get_height())
             ))
 
     def move(self):
-        self.rect.move_ip(-self.speed, 0)
+        if self.rect.left > -200:
+            self.rect.move_ip(-self.speed, 0)
+        else:
+            self.generate()
 
     def update(self):
         self.move()
-        self.generate()
         win.screen.blit(self.image, self.rect)

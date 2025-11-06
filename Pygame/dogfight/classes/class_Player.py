@@ -8,8 +8,6 @@ from .class_Screen import win
 
 class Player:
     def __init__(self):
-        # self.image = Surface((50, 50))
-        # self.image.fill('SteelBlue')
         self.image = scale_by(load('images/su-33.png').convert_alpha(), .2)
         self.rect = self.image.get_rect(center=(
             win.screen.get_width() // 2,

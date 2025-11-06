@@ -17,23 +17,21 @@ clouds_list = [
 class Clouds:
     def __init__(self):
         self.image = scale_by(load(choice(clouds_list)).convert_alpha(), .8)
-        self.rect = self.image.get_rect(center=(
-                uniform(win.screen.get_width(), win.screen.get_width() + 1000),
-                uniform(0, win.screen.get_height())
-            ))
+        self.generate()
         self.speed = uniform(2, 4)
 
     def generate(self):
-        if self.rect.left < -2000:
             self.rect = self.image.get_rect(center=(
                 uniform(win.screen.get_width() + 1000, win.screen.get_width() + 5000),
                 uniform(0, win.screen.get_height())
             ))
 
     def move(self):
-        self.rect.move_ip(-self.speed, 0)
+        if self.rect.left > -2000:
+            self.rect.move_ip(-self.speed, 0)
+        else:
+            self.generate()
 
     def update(self):
         self.move()
-        self.generate()
         win.screen.blit(self.image, self.rect)
