@@ -60,7 +60,7 @@ class Player:
 
 class Rockets:
     def __init__(self):
-        self.image = pg.Surface((25, 25))
+        self.image = pg.Surface((25, 5))
         self.image.fill('Maroon')
         self.rect = self.image.get_rect(center=(
                 uniform(scr.get_width(), scr.get_width() + 1000),
@@ -86,7 +86,7 @@ class Rockets:
 player = Player()
 
 
-rokets = [Rockets() for _ in range(15)]
+rokets = [Rockets() for _ in range(20)]
 
 
 
