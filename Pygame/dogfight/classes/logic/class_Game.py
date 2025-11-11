@@ -5,16 +5,12 @@ from pygame.time import Clock
 from pygame.event import get
 from pygame.locals import QUIT, KEYDOWN, K_ESCAPE
 
-from .class_Screen import win
-from .class_Player import Player
-from .class_Enemies import Enemies
-from .class_Clouds import Clouds
+from ..screens.class_Screen import win
+from ..groups.class_AllSprites import all_sprites
+from .class_CreateObjects import create_objects
 
 
-player = Player()
-enemies = [Enemies() for _ in range(15)]
-clouds = [Clouds() for _ in range(15)]
-
+create_objects.create()
 
 
 class Game:
@@ -33,13 +29,7 @@ class Game:
                 if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
                     self.loop = False
 
-            player.update()
-
-            for enemy in enemies:
-                enemy.update()
-
-            for cloud in clouds:
-                cloud.update()
+            all_sprites.update()
 
             pg.display.update()
             self.clock.tick(self.fps)

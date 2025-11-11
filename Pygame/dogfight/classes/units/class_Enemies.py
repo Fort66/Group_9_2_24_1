@@ -1,20 +1,28 @@
 from pygame import Surface
 from pygame.image import load
 from pygame.transform import scale_by
+from pygame.sprite import Sprite
 
 from random import uniform
 
-from .class_Screen import win
+from ..screens.class_Screen import win
+from ..groups.class_SpritesGroups import groups
+from ..groups.class_AllSprites import all_sprites
 
-class Enemies:
+
+class Enemies(Sprite):
     def __init__(self):
+        Sprite.__init__(self)
         self.image = scale_by(load('images/rocket.gif').convert_alpha(), .3)
         self.generate()
-        self.speed = uniform(5, 15)
+        self.speed = uniform(5, 10)
+        self._layer = 2
+        groups.enemies_group.add(self)
+        all_sprites.add(self)
 
     def generate(self):
             self.rect = self.image.get_rect(center=(
-                uniform(win.screen.get_width(), win.screen.get_width() + 1000),
+                uniform(win.screen.get_width()+ 1000, win.screen.get_width() + 5000),
                 uniform(0, win.screen.get_height())
             ))
 
