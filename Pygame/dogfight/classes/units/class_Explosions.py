@@ -13,7 +13,7 @@ class Explosions(Sprite):
         self.speed = 0
 
         if types == 1:
-            self.image = gif.load('images/rocket_explosion.gif', loops=0)
+            self.image = gif.load('images/explosions/rocket_explosion.gif', loops=0)
             self.image = gif.transform.scale_by(self.image, .5, new_gif=True)
 
         self.rect = self.image.get_rect(center=(pos))

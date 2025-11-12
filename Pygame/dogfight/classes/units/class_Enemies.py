@@ -11,11 +11,11 @@ from ..groups.class_AllSprites import all_sprites
 
 
 class Enemies(Sprite):
-    def __init__(self):
+    def __init__(self, plane):
         Sprite.__init__(self)
-        self.image = scale_by(load('images/rocket.gif').convert_alpha(), .3)
+        self.image = scale_by(load(plane[0]).convert_alpha(), plane[1])
         self.generate()
-        self.speed = uniform(5, 10)
+        self.speed = uniform(3, 5)
         self._layer = 2
         groups.enemies_group.add(self)
         all_sprites.add(self)

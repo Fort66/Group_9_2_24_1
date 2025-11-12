@@ -10,6 +10,7 @@ from ..groups.class_SpritesGroups import groups
 from ..groups.class_AllSprites import all_sprites
 from .class_PlayerShoots import PlayerShoots
 from .class_Explosions import Explosions
+from ..logic.class_Signals import signals
 
 from icecream import ic
 
@@ -92,6 +93,8 @@ class Player(Sprite):
 
 
         # player_collide = groupcollide(groups.player_group, groups.enemies_group, True, True)
+        # if player_collide:
+        #     signals.change_signals('game_over')
 
     def update(self):
         self.move()
