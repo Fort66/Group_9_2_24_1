@@ -8,7 +8,7 @@ from pygame.sprite import Sprite, groupcollide
 from ..screens.class_Screen import win
 from ..groups.class_SpritesGroups import groups
 from ..groups.class_AllSprites import all_sprites
-from .class_PlayerShoots import PlayerShoots
+from .class_Shoots import Shoots
 from .class_Explosions import Explosions
 from ..logic.class_Signals import signals
 
@@ -58,7 +58,7 @@ class Player(Sprite):
                 if not self.shoot_time:
                     self.shoot_time = time()
                 if time() - self.shoot_time >= self.permission_shoot:
-                    shoot = PlayerShoots((self.rect.centerx - 46, self.rect.centery + 10), 10)
+                    shoot = Shoots((self.rect.centerx - 46, self.rect.centery + 10), 10, self.__class__.__name__)
                     groups.player_rocket_group.add(shoot)
                     all_sprites.add(shoot)
                     self.shoot_time = time()

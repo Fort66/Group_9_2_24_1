@@ -4,6 +4,7 @@ from pygame.sprite import Sprite
 
 from ..groups.class_AllSprites import all_sprites
 from ..screens.class_Screen import win
+from ..logic.class_Gifs import gifs
 
 
 class Explosions(Sprite):
@@ -13,8 +14,7 @@ class Explosions(Sprite):
         self.speed = 0
 
         if types == 1:
-            self.image = gif.load('images/explosions/rocket_explosion.gif', loops=0)
-            self.image = gif.transform.scale_by(self.image, .5, new_gif=True)
+            self.image = gifs.plane_explosion
 
         self.rect = self.image.get_rect(center=(pos))
         all_sprites.add(self)
